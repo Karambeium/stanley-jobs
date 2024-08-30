@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+//rootroot123!
 
 function UserList() {
     const [users, setUsers] = useState([]);
@@ -94,7 +95,10 @@ function UserList() {
                 "address": "808 ash st, peachtree city, ga 30269",
                 "phone": "1234567891"
             }
-        ])
+        ]);
+        fetch("http://localhost:8080/users").then((res) => {
+            setUsers(res.body);
+        });
     }, []);
 
     return (
@@ -103,12 +107,17 @@ function UserList() {
                 <table>
                     <thead>
                         <tr>
-                            <td>Name</td>
+                            {/* <td>Name</td>
                             <td>Email</td>
                             <td>Password</td>
                             <td>Role</td>
                             <td>Address</td>
                             <td>Phone</td>
+                            <td>Actions</td> */}
+                            <td>Id</td>
+                            <td>Username</td>
+                            <td>Password</td>
+                            <td>Type</td>
                             <td>Actions</td>
                         </tr>
                     </thead>
@@ -117,12 +126,16 @@ function UserList() {
                             users.map((u, i) => {
                                 return (
                                     <tr key={i}>
-                                        <td>{u.name}</td>
+                                        {/* <td>{u.name}</td>
                                         <td>{u.email}</td>
                                         <td>{u.password}</td>
                                         <td>{u.role}</td>
                                         <td>{u.address}</td>
-                                        <td>{u.phone}</td>
+                                        <td>{u.phone}</td> */}
+                                        <td>{u.id}</td>
+                                        <td>{u.username}</td>
+                                        <td>{u.password}</td>
+                                        <td>{u.type}</td>
                                         <td>
                                             <button style={{backgroundColor:'white'}}>Modify User</button>
                                             <button style={{backgroundColor:'red'}}>Delete User</button>
