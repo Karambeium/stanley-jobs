@@ -52,7 +52,10 @@ public class UserService {
         } else {
             throw new NoSuchElementException("User not found with id: " + id);
         }
+    }
 
+    public Optional<User> authenticate(String username, String password) {
+        return userRepository.findByUsernameAndPassword(username, password);
     }
 
 }
