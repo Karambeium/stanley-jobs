@@ -1,6 +1,9 @@
 package com.stanley.stanley_jobs;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -9,12 +12,20 @@ import jakarta.persistence.Table;
 public class User {
 
     @Id
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
+
+    @Column(name = "username")
     private String username;
+
+    @Column(name = "password")
     private String password;
+
+    @Column(name = "type")
     private String type;
 
-    public User(long id, String username, String password, String type) {
+    public User(int id, String username, String password, String type) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -29,7 +40,7 @@ public class User {
         return this.id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

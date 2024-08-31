@@ -17,36 +17,37 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public Optional<User> getUserById(Long id) {
+    public Optional<User> getUserById(int id) {
         return userRepository.findById(id);
     }
 
-    public User postUser(User user) {
-        return userRepository.save(user); //returns the user object that was passed in
+    public User postUser(User newUser) {
+        return userRepository.save(newUser); //returns the user object that was passed in
     }
 
-    public User updateUser(Long id, User userUpdates) {
-        Optional<User> existingUser = userRepository.findById(id);
-        if (existingUser != null) {
+    public User updateUser(int id, User userUpdates) {
+        Optional<User> existingUserOpt = userRepository.findById(id);
+
+        if (existingUserOpt.isPresent()) {
+            User existingUser = existingUserOpt.get();
+
             if (userUpdates.getUsername() != null) {
-                existingUser.get().setUsername(userUpdates.getUsername());
+                existingUser.setUsername(userUpdates.getUsername());
             }
             if (userUpdates.getPassword() != null) {
-                existingUser.get().setPassword(userUpdates.getPassword());
+                existingUser.setPassword(userUpdates.getPassword());
             }
-
             if (userUpdates.getType() != null) {
-                existingUser.get().setType(userUpdates.getType());
+                existingUser.setType(userUpdates.getType());
             }
 
-            return userRepository.save(existingUser.get());
-
+            return userRepository.save(existingUser);
         } else {
             throw new NoSuchElementException("User not found with id: " + id);
         }
     }
 
-    public void deleteUserById(Long id) {
+    public void deleteUserById(int id) {
         if (userRepository.existsById(id)) {
             userRepository.deleteById(id);
         } else {

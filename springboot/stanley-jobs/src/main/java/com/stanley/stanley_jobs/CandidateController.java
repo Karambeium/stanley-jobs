@@ -17,37 +17,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/users")
-public class UserController {
+@RequestMapping("/candidates")
+public class CandidateController {
 
     @Autowired
-    private UserService userService;
+    CandidateService candidateService;
 
     @GetMapping
-    public List<User> getAllUsers() {
-        return userService.getAllUsers();
+    public List<Candidate> getAllCandidates() {
+        return candidateService.getAllCandidates();
     }
 
     @GetMapping("/{id}")
-    public Optional<User> getUserById(@PathVariable int id) {
-        return userService.getUserById(id);
+    public Optional<Candidate> getCandidateById(@PathVariable int id) {
+        return candidateService.getCandidateById(id);
     }
 
     @PostMapping
-    public ResponseEntity<User> postUser(@RequestBody User newUser) {
+    public ResponseEntity<Candidate> postCandidate(@RequestBody Candidate newCandidate) {
         try {
-            User createdUser = userService.postUser(newUser);
-            return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
+            Candidate createdCandidate = candidateService.postCandidate(newCandidate);
+            return ResponseEntity.status(HttpStatus.CREATED).body(createdCandidate);
         } catch (Exception ex) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable int id, @RequestBody User userUpdates) {
+    public ResponseEntity<Candidate> updateCandidate(@PathVariable int id, @RequestBody Candidate candidateUpdates) {
         try {
-            User updatedUser = userService.updateUser(id, userUpdates);
-            return ResponseEntity.ok(updatedUser);
+            Candidate updatedCandidate = candidateService.updateCandidate(id, candidateUpdates);
+            return ResponseEntity.ok(updatedCandidate);
         } catch (NoSuchElementException ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null); // Return 404 Not Found
         }
@@ -56,7 +56,7 @@ public class UserController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUserById(@PathVariable int id) {
         try {
-            userService.deleteUserById(id);
+            candidateService.deleteCandidateById(id);
             return ResponseEntity.noContent().build();
         } catch (NoSuchElementException ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null); // Return 404 Not Found
