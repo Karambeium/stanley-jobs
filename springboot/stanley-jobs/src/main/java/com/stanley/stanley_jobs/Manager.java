@@ -18,24 +18,22 @@ public class Manager {
     @Column(name = "user_id")
     private int userId;
 
-    @Column(name = "full_name", length = 50)
+    @Column(name = "full_name")
     private String fullName;
 
-    @Column(name = "email", length = 50)
+    @Column(name = "email")
     private String email;
 
-    @Column(name = "department", length = 25)
+    @Column(name = "department")
     private String department;
 
-    @Column(name = "phone", length = 25)
+    @Column(name = "phone")
     private String phone;
 
-    // Default constructor
     public Manager() {
         super();
     }
 
-    // Parameterized constructor
     public Manager(int userId, String fullName, String email, String department, String phone) {
         this.userId = userId;
         this.fullName = fullName;
