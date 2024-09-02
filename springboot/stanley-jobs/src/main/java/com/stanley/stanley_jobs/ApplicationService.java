@@ -1,8 +1,8 @@
 package com.stanley.stanley_jobs;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,10 +21,9 @@ public class ApplicationService {
         return applicationRepository.findById(id);
     }
 
-    public List<Application> getApplicationsByManagerId(int managerId) {
-        return applicationRepository.findByManagerId(managerId);
-    }
-
+    // public List<Application> getApplicationsByManagerId(int managerId) {
+    //     return applicationRepository.findByManagerId(managerId);
+    // }
     public List<Application> getApplicationsByJobId(int jobId) {
         return applicationRepository.findByJobId(jobId);
     }

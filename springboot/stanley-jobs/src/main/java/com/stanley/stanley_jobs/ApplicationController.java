@@ -38,11 +38,10 @@ public class ApplicationController {
         }
     }
 
-    @GetMapping("/manager/{managerId}")
-    public List<Application> getApplicationsByManagerId(@PathVariable int managerId) {
-        return applicationService.getApplicationsByManagerId(managerId);
-    }
-
+    // @GetMapping("/manager/{managerId}")
+    // public List<Application> getApplicationsByManagerId(@PathVariable int managerId) {
+    //     return applicationService.getApplicationsByManagerId(managerId);
+    // }
     @GetMapping("/job/{jobId}")
     public List<Application> getApplicationsByJobId(@PathVariable int jobId) {
         return applicationService.getApplicationsByJobId(jobId);
