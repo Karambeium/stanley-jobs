@@ -22,6 +22,7 @@ function Login({ setRole, setUser, setUserId, userId, user }) {
             if (res.status === 200) {
                 setUserId(res.body.id);
                 setUser(res.body);
+                document.cookie = `userId=${res.body.id}`;
                 nav('/home', {state:{userId:userId, role:res.body.type}});
             } else {
                 setShowError(true);
