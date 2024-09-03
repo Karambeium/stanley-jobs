@@ -25,6 +25,7 @@ function App() {
     <>
       <BrowserRouter>
         <NavBar userId={userId} userName={user.name} role={role}></NavBar>
+        <JobsList></JobsList>
         <Routes>
           <Route path="/" element={<Home userId={userId}/>}/>
           <Route path="/home" element={<Home  userId={userId}/>}/>

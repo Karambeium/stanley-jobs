@@ -1,9 +1,50 @@
-// import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function JobsList() {
+    const [jobs, setJobs] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:8080/jobs")
+        .then((res) => res.json())
+        .then(arr => setJobs(arr));
+    }, []);
+
     return (
         <>
-            <p>Jobs List Component</p>
+            <div style={{maxHeight:"75vh", overflowY:"scroll", overflowX:"auto"}}>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Job</td>
+                            <td>Department</td>
+                            <td>Listing Date</td>
+                            <td>Position</td>
+                            <td>Description</td>
+                            <td>Status</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            jobs.map((u, i) => {
+                                return (
+                                    <tr key={i}>
+                                        <td>{u.listing_title}</td>
+                                        <td>{u.department}</td>
+                                        <td>{u.date_listed}</td>
+                                        <td>{u.job_title}</td>
+                                        <td>{u.job_description}</td>
+                                        <td>{u.listing_status}</td>
+                                        <td>
+                                            <button style={{backgroundColor:'white'}}>Apply for Job</button>
+                                            <button style={{backgroundColor:'red'}}>Delete User</button>
+                                        </td>
+                                    </tr>
+                                )
+                            })
+                        }
+                    </tbody>
+                </table>
+            </div>
         </>
     )
 }
