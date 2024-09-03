@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function JobsList() {
     const [jobs, setJobs] = useState([]);
@@ -35,7 +36,9 @@ function JobsList() {
                                         <td>{u.job_description}</td>
                                         <td>{u.listing_status}</td>
                                         <td>
-                                            <button style={{backgroundColor:'white'}}>Apply for Job</button>
+                                            <Link to='/application' state = {{
+                                                'job' : u
+                                            }}>Apply for Job</Link>
                                             <button style={{backgroundColor:'red'}}>Delete User</button>
                                         </td>
                                     </tr>

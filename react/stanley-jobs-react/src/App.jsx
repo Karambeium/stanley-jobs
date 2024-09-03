@@ -8,6 +8,7 @@ import JobsList from './components/JobsList.jsx';
 import Home from './pages/Home.jsx';
 import NavBar from './components/NavBar.jsx';
 import UserList from './components/UserList.jsx';
+import Application from './pages/Application.jsx';
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
           <Route path='/login' element={<Login setRole={setRole} setUser={setUser} setUserId={setUserId} userId={userId}/>}/>
           <Route path='/register' element={<Register setUser={setUser} user={user} setRole={setRole} setUserId={setUserId}/>}/>
           <Route path='/users' element={<UserList/>}/>
+          <Route path='/application' element={<Application/>}/>
         </Routes>
       </BrowserRouter>
     </>
