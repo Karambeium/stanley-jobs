@@ -14,7 +14,7 @@ function NavBar({userId, userName, role}) {
                 <Link to='/users' style={{display:role==='admin'?'block':'none'}}>Manage Users</Link>
                 <Link to='/login' style={{display:!userId?'inline':'block'}}>Login</Link>
                 <Link to='/register' style={{display:!userId?'inline':'block'}}>Register</Link>
-                <Link to='/home'>Home</Link>
+                <Link to='/home' style={{display:userId?'block':'none'}}>Home</Link>
                 <div style={{display:userId?'inline':'block', color:'black'}}>Welcome, {userName}</div>
             </nav>
         </>
