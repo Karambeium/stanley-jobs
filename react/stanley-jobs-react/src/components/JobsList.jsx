@@ -12,16 +12,17 @@ function JobsList() {
 
     return (
         <>
-            <div style={{maxHeight:"75vh", overflowY:"scroll", overflowX:"auto"}}>
-                <table>
+            <div className="manager-dashboard" style={{maxHeight:"75vh", overflowY:"scroll", overflowX:"auto"}}>
+                <table className="table">
                     <thead>
                         <tr>
-                            <td>Job</td>
-                            <td>Department</td>
-                            <td>Listing Date</td>
-                            <td>Position</td>
-                            <td>Description</td>
-                            <td>Status</td>
+                            <th>Job Title</th>
+                            <th>Department</th>
+                            <th>Date Listed</th>
+                            <th>Position</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,9 +37,11 @@ function JobsList() {
                                         <td>{u.jobDescription}</td>
                                         <td>{u.listingStatus}</td>
                                         <td>
+                                            <button>
                                             <Link to='/application' state = {{
                                                 'job' : u
                                             }}>Apply</Link>
+                                            </button>
                                             
                                         </td>
                                     </tr>

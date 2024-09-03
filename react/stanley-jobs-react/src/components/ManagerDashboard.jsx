@@ -139,14 +139,14 @@ const ManagerDashboard = ({ managerId }) => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            fetchApplications(selectedJobId); // Refresh applications after update
+            fetchApplications(selectedJobId);
         } catch (error) {
             console.error('Error updating application status:', error);
         }
     };
 
     return (
-        <div className="manager-dashboard">
+        <div style={{maxHeight:"75vh", overflowY:"scroll", overflowX:"auto"}}>
             <h2>Job Listings</h2>
             <button className="btn btn-primary" onClick={handleCreateClick}>
                 Create New Job Listing
@@ -160,7 +160,7 @@ const ManagerDashboard = ({ managerId }) => {
                     isEditMode={!!editingJobId}
                 />
             ) : (
-                <div>
+                <div className="manager-dashboard">
                     <table className="table">
                         <thead>
                             <tr>

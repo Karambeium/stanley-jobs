@@ -34,7 +34,7 @@ function App() {
           <Route path='/register' element={<Register setUser={setUser} user={user} setRole={setRole} setUserId={setUserId}/>}/>
           <Route path='/users' element={<UserList/>}/>
           <Route path='/application' element={<Application/>}/>
-          <Route path='/manager' element={<ManagerDashboard/>}/>
+          <Route path='/manager' element={<ManagerDashboard managerId={2}/>}/>
         </Routes>
       </BrowserRouter>
     </>

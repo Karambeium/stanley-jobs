@@ -3,7 +3,7 @@ import JobsList from '../components/JobsList';
 function Home() {
     return (
         <>
-            <p>Home Page</p>
+            <h2>Home Page</h2>
             <JobsList />
         </>
     )
