@@ -40,3 +40,174 @@
 .read-the-docs {
   color: #888;
 }
+
+
+/* src/App.css */
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.manager-dashboard {
+  padding: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+.manager-dashboard h2 {
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 24px;
+  color: #2f3542;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 24px;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.table th, .table td {
+  padding: 16px 24px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.table th {
+  background-color: #f9f9f9;
+  color: #495057;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.075em;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.table td {
+  background-color: #ffffff;
+  color: #495057;
+  font-size: 16px;
+}
+
+.table tr:hover td {
+  background-color: #f1f3f5;
+}
+
+.btn-group {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-group .btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-warning {
+  background-color: #ffd966;
+  color: #856404;
+  border-color: #ffc107;
+}
+
+.btn-warning:hover {
+  background-color: #ffc107;
+}
+
+.btn-danger {
+  background-color: #f28b82;
+  color: #b71c1c;
+  border-color: #f28b82;
+}
+
+.btn-danger:hover {
+  background-color: #ff5252;
+}
+
+.btn-secondary {
+  background-color: #d6d8db;
+  color: #6c757d;
+  border-color: #cfd2d6;
+}
+
+.btn-secondary:hover {
+  background-color: #bfc1c3;
+}
+
+.btn:disabled, .btn.disabled {
+  background-color: #e9ecef;
+  color: #6c757d;
+  cursor: not-allowed;
+  border-color: #dee2e6;
+}
+
+input[type="text"], textarea, select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 16px;
+  margin-bottom: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+  height: 40px; /* Ensure content visibility */
+  line-height: 1.2; /* Adjust for vertical centering */
+}
+
+select {
+  background-color: #ffffff; /* Ensure dropdown background is white */
+  appearance: none; /* Remove default dropdown arrow for custom styling if needed */
+  -webkit-appearance: none; /* For Safari */
+  -moz-appearance: none; /* For Firefox */
+}
+
+input[type="text"]:focus, textarea:focus, select:focus {
+  border-color: #80bdff;
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+input::placeholder {
+  color: #adb5bd;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.selected-row {
+  background-color: #e0f7fa; /* Light cyan background */
+  border-left: 4px solid #007bff; /* Blue left border to highlight selection */
+}
+
+.selected-row td {
+  font-weight: bold; /* Make text bold in the selected row */
+}
+
