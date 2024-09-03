@@ -17,7 +17,7 @@ function Application() {
             fetch("http://localhost:8080/applications", {
                 method: 'POST',
                 body: JSON.stringify({
-                    jobId : job.jobId,
+                    jobId : job.id,
                     userId : userId,
                     dateApplied : new Date().toISOString().slice(0, 10),
                     coverLetter : formData.coverLetter,

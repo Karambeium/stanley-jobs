@@ -28,7 +28,7 @@ public class ApplicationService {
         return applicationRepository.findByJobId(jobId);
     }
 
-    public Optional<Application> getApplicationByUserId(int userId) {
+    public List<Application> getApplicationByUserId(int userId) {
         return applicationRepository.findByUserId(userId);
     }
 
