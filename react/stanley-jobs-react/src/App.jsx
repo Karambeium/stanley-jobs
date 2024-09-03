@@ -29,7 +29,7 @@ function App() {
         <NavBar userId={userId} userName={user.username} role={role}></NavBar>
         <Routes>
           <Route path="/" element={<Home userId={userId}/>}/>
-          <Route path="/home" element={<Home userId={userId} role={role}/>}/>
+          <Route path="/home" element={<Home userId={userId} role={role} user={user}/>}/>
           <Route path='/login' element={<Login setRole={setRole} setUser={setUser} setUserId={setUserId} userId={userId}/>}/>
           <Route path='/register' element={<Register setUser={setUser} user={user} setRole={setRole} setUserId={setUserId}/>}/>
           <Route path='/users' element={<UserList/>}/>

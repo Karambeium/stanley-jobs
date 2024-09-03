@@ -1,10 +1,10 @@
 import JobsList from '../components/JobsList';
 
-function Home({ userId, role }) {
+function Home({ userId, role, user }) {
     return (
         <>
-            <p>Home Page</p>
-            <JobsList style={{display:role==='Candidate'?'block':'none'}} userId={userId} role={role}/>
+            <h2>Home Page</h2>
+            <JobsList style={{display:role==='Candidate'?'block':'none'}} userId={userId} role={role} user={user}/>
         </>
     )
 }
