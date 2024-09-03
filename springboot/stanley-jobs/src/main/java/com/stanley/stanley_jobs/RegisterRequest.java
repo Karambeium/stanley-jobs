@@ -1,58 +1,17 @@
 package com.stanley.stanley_jobs;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+public class RegisterRequest {
 
-@Entity
-@Table(name = "candidate")
-class Candidate {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    @Column(name = "user_id")
     private int user_id;
-
-    @Column(name = "full_name")
     private String full_name;
-
-    @Column(name = "email")
     private String email;
-
-    @Column(name = "address")
     private String address;
-
-    @Column(name = "phone")
     private String phone;
-
-    @Column(name = "resume")
     private String resume;
+    private String password;
 
-    public Candidate(int id, int user_id, String fullname, String email, String address, String phone, String resume) {
-        this.id = id;
-        this.user_id = user_id;
-        this.full_name = fullname;
-        this.email = email;
-        this.address = address;
-        this.phone = phone;
-        this.resume = resume;
-    }
-
-    public Candidate() {
+    public RegisterRequest() {
         super();
-    }
-
-    public int getId() {
-        return this.id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getUser_id() {
@@ -101,6 +60,14 @@ class Candidate {
 
     public void setResume(String resume) {
         this.resume = resume;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 }

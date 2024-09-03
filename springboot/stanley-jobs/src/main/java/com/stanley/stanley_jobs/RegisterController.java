@@ -15,11 +15,23 @@ public class RegisterController {
     private UserService userService;
 
     @PostMapping("/register") //any new registration is a candidate by default. Only admin has rights to update them to HM
-    public Candidate register(@RequestBody Candidate newCandidate) {
-        //DONE: when register req comes, first check if exisiting email - add to candidate table 
-        return candidateService.registerCandidate(newCandidate);
+    public User register(@RequestBody RegisterRequest newRegisterRequest) {
+        Candidate newCandidate = new Candidate();
+        newCandidate.setUser_id(newRegisterRequest.getUser_id());
+        newCandidate.setFull_name(newRegisterRequest.getFull_name());
+        newCandidate.setEmail(newRegisterRequest.getEmail());
+        newCandidate.setAddress(newRegisterRequest.getAddress());
+        newCandidate.setPhone(newRegisterRequest.getPhone());
+        newCandidate.setResume(newRegisterRequest.getResume());
 
-        //TODO: when register req comes - add to user table (username, password (both of these are not being asked during register process!), type=CANDIDATE)
+        User newUser = new User();
+        newUser.setUsername(newRegisterRequest.getEmail());
+        newUser.setPassword(newRegisterRequest.getPassword());
+        newUser.setType("Candidate");
+
+        candidateService.registerCandidate(newCandidate);
+        return userService.postUser(newUser);
+
     }
 
 }
