@@ -29,17 +29,17 @@ function JobsList() {
                             jobs.map((u, i) => {
                                 return (
                                     <tr key={i}>
-                                        <td>{u.listing_title}</td>
+                                        <td>{u.listingTitle}</td>
                                         <td>{u.department}</td>
-                                        <td>{u.date_listed}</td>
-                                        <td>{u.job_title}</td>
-                                        <td>{u.job_description}</td>
-                                        <td>{u.listing_status}</td>
+                                        <td>{u.dateListed}</td>
+                                        <td>{u.jobTitle}</td>
+                                        <td>{u.jobDescription}</td>
+                                        <td>{u.listingStatus}</td>
                                         <td>
                                             <Link to='/application' state = {{
                                                 'job' : u
-                                            }}>Apply for Job</Link>
-                                            <button style={{backgroundColor:'red'}}>Delete User</button>
+                                            }}>Apply</Link>
+                                            
                                         </td>
                                     </tr>
                                 )

@@ -9,6 +9,7 @@ import Home from './pages/Home.jsx';
 import NavBar from './components/NavBar.jsx';
 import UserList from './components/UserList.jsx';
 import Application from './pages/Application.jsx';
+import ManagerDashboard from './components/ManagerDashboard'
 
 function App() {
 
@@ -26,7 +27,6 @@ function App() {
     <>
       <BrowserRouter>
         <NavBar userId={userId} userName={user.name} role={role}></NavBar>
-        <JobsList></JobsList>
         <Routes>
           <Route path="/" element={<Home userId={userId}/>}/>
           <Route path="/home" element={<Home  userId={userId}/>}/>
@@ -34,6 +34,7 @@ function App() {
           <Route path='/register' element={<Register setUser={setUser} user={user} setRole={setRole} setUserId={setUserId}/>}/>
           <Route path='/users' element={<UserList/>}/>
           <Route path='/application' element={<Application/>}/>
+          <Route path='/manager' element={<ManagerDashboard/>}/>
         </Routes>
       </BrowserRouter>
     </>
