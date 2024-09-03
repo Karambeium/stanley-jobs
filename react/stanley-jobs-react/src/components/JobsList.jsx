@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-function JobsList() {
+function JobsList({ userId, role }) {
     const [jobs, setJobs] = useState([]);
 
     useEffect(() => {
@@ -39,7 +39,9 @@ function JobsList() {
                                         <td>
                                             <button>
                                             <Link to='/application' state = {{
-                                                'job' : u
+                                                'job' : u,
+                                                'role' : role,
+                                                'userId' : userId
                                             }}>Apply</Link>
                                             </button>
                                             
