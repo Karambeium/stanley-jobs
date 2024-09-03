@@ -1,61 +1,84 @@
 import { useState } from 'react';
 
 function Register({ setUser, user, setRole, setUserId }) {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [addressLine, setAddressLine] = useState('');
-    const [city, setCity] = useState('');
-    const [state, setState] = useState('');
-    const [zipCode, setZipCode] = useState('');
-    const [phone, setPhone] = useState('');
-    const [resume, setResume] = useState('');
-    const [password, setPassword] = useState('');
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        addressLine: '',
+        city: '',
+        state: '',
+        zipCode: '',
+        phone: '',
+        resume: '',
+        password: ''
+    });
 
     const handleRegister = (event) => {
-        // TODO : post user to backend and set id and role accordingly
         event.preventDefault();
-        setUser({
-            name: `${firstName} ${lastName}`,
-            email: email,
-            address: `${addressLine} ${city} ${state} ${zipCode}`,
-            phone: phone,
-            resume: resume,
-            password: password
+
+        const newUser = {
+            full_name: `${formData.firstName} ${formData.lastName}`,
+            email: formData.email,
+            address: `${formData.addressLine}, ${formData.city}, ${formData.state} ${formData.zipCode}`,
+            phone: formData.phone,
+            resume: formData.resume,
+            password: formData.password
+        };
+
+        fetch("http://localhost:8080/register", {
+            method: 'POST',
+            body: JSON.stringify(newUser),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then((res) => res.json())
+            .then((user) => {
+                setUser(user);
+                setUserId(user.id);
+                setRole(user.type);
+            });
+
+        setFormData({
+            firstName: '',
+            lastName: '',
+            email: '',
+            addressLine: '',
+            city: '',
+            state: '',
+            zipCode: '',
+            phone: '',
+            resume: '',
+            password: ''
         });
-        setUserId(1); // TODO : remove
-        setFirstName('');
-        setLastName('');
-        setEmail('');
-        setAddressLine('');
-        setCity('');
-        setState('');
-        setZipCode('');
-        setPhone('');
-        setResume('');
-        setPassword('');
-        setRole('candidate');
-        console.log('register log', user);
+    }
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setFormData((prevDetails) => ({
+            ...prevDetails,
+            [name]: value,
+        }));
     }
 
     return (
         <>
-            <p>Register Page</p>
+            <h2>Register Page</h2>
             <form onSubmit={handleRegister}>
-                <input type="text" name="firstName" placeholder="First Name" onChange={e => setFirstName(e.target.value)} value={firstName}></input>
-                <input type="text" name="lastName" placeholder="Last Name" onChange={e => setLastName(e.target.value)} value={lastName}></input>
-                <input type="text" name="email" placeholder="Email" onChange={e => setEmail(e.target.value)} value={email}></input>
-                <input type="text" name="addressLine" placeholder="Address Line" onChange={e => setAddressLine(e.target.value)} value={addressLine}></input>
-                <input type="text" name="city" placeholder="City" onChange={e => setCity(e.target.value)} value={city}></input>
-                <input type="text" name="state" placeholder="State" onChange={e => setState(e.target.value)} value={state}></input>
-                <input type="text" name="zipcode" placeholder="Zipcode" onChange={e => setZipCode(e.target.value)} value={zipCode}></input>
-                <input type="text" name="phone" placeholder="Phone Number" onChange={e => setPhone(e.target.value)} value={phone}></input>
-                <textarea name="resume" placeholder="Resume" onChange={e => setResume(e.target.value)} value={resume}></textarea>
-                <input type="password" name="password" placeholder="Password" onChange={e => setPassword(e.target.value)} value={password}></input>
+                <input type="text" name="firstName" placeholder="First Name" onChange={handleInputChange} value={formData.firstName}></input>
+                <input type="text" name="lastName" placeholder="Last Name" onChange={handleInputChange} value={formData.lastName}></input>
+                <input type="text" name="email" placeholder="Email" onChange={handleInputChange} value={formData.email}></input>
+                <input type="text" name="addressLine" placeholder="Address Line" onChange={handleInputChange} value={formData.addressLine}></input>
+                <input type="text" name="city" placeholder="City" onChange={handleInputChange} value={formData.city}></input>
+                <input type="text" name="state" placeholder="State" onChange={handleInputChange} value={formData.state}></input>
+                <input type="text" name="zipCode" placeholder="Zipcode" onChange={handleInputChange} value={formData.zipCode}></input>
+                <input type="text" name="phone" placeholder="Phone Number" onChange={handleInputChange} value={formData.phone}></input>
+                <textarea name="resume" placeholder="Resume" onChange={handleInputChange} value={formData.resume}></textarea>
+                <input type="password" name="password" placeholder="Password" onChange={handleInputChange} value={formData.password}></input>
                 <input type="submit"></input>
             </form>
         </>
-    )
+    );
 }
 
 export default Register;

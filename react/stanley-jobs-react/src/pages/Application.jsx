@@ -9,7 +9,6 @@ function Application() {
     });
 
     const handleApply = (event) => {
-        // TODO : post user to backend and set id and role accordingly
         fetch("http://localhost:8080/application", {
             method: 'POST',
             body: {

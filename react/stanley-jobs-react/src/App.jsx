@@ -14,9 +14,9 @@ import ManagerDashboard from './components/ManagerDashboard'
 function App() {
 
   const [user, setUser] = useState({
-    name:'Karam Jivani' // TODO : remove
+    name:''
   });
-  const [role, setRole] = useState('admin'); // TODO : remove
+  const [role, setRole] = useState('Candidate');
   const [userId, setUserId] = useState(undefined);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <NavBar userId={userId} userName={user.name} role={role}></NavBar>
+        <NavBar userId={userId} userName={user.username} role={role}></NavBar>
         <Routes>
           <Route path="/" element={<Home userId={userId}/>}/>
           <Route path="/home" element={<Home userId={userId} role={role}/>}/>
