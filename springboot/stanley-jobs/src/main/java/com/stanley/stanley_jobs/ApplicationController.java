@@ -38,6 +38,17 @@ public class ApplicationController {
         }
     }
 
+    @GetMapping("/{userId}")
+    public ResponseEntity<Optional<Application>> getApplicationByUserId(@PathVariable int id) {
+        Optional<Application> application = applicationService.getApplicationByUserId(id);
+        if (application.isPresent()) {
+            return ResponseEntity.ok(application);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+
+    }
+
     // @GetMapping("/manager/{managerId}")
     // public List<Application> getApplicationsByManagerId(@PathVariable int managerId) {
     //     return applicationService.getApplicationsByManagerId(managerId);

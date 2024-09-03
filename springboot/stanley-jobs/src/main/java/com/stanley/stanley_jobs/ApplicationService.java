@@ -28,6 +28,10 @@ public class ApplicationService {
         return applicationRepository.findByJobId(jobId);
     }
 
+    public Optional<Application> getApplicationByUserId(int userId) {
+        return applicationRepository.findByUserId(userId);
+    }
+
     public Application postApplication(Application newApplication) {
         return applicationRepository.save(newApplication);
     }
