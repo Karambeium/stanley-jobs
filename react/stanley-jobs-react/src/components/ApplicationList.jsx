@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const ApplicationList = ({ applications, onSaveStatus }) => {
-    console.log(applications);
+    
     const [editingApplicationId, setEditingApplicationId] = useState(null);
     const [editedStatus, setEditedStatus] = useState('');
 
@@ -10,9 +10,11 @@ const ApplicationList = ({ applications, onSaveStatus }) => {
         setEditedStatus(application.applicationStatus);
     };
 
-    const saveStatus = (applicationId) => {
-        onSaveStatus(applicationId, editedStatus);
+    const saveStatus = (application) => {
+        console.log(editedStatus);
+        onSaveStatus(application.id, editedStatus);
         setEditingApplicationId(null);
+        
     };
 
     const cancelEdit = () => {
@@ -42,7 +44,7 @@ const ApplicationList = ({ applications, onSaveStatus }) => {
                             <td>{application.userId}</td>
                             <td>{new Date(application.dateApplied).toLocaleDateString()}</td>
                             <td>
-                                {editingApplicationId === application.id ? (
+                                {editingApplicationId != null && editingApplicationId === application.id ? (
                                     <select
                                         value={editedStatus}
                                         onChange={(e) => setEditedStatus(e.target.value)}
@@ -50,6 +52,7 @@ const ApplicationList = ({ applications, onSaveStatus }) => {
                                         <option value="Pending">Pending</option>
                                         <option value="Reviewed">Reviewed</option>
                                         <option value="Interviewed">Interviewed</option>
+                                        <option value="Accepted">Accepted</option>
                                         <option value="Rejected">Rejected</option>
                                     </select>
                                 ) : (
@@ -59,11 +62,11 @@ const ApplicationList = ({ applications, onSaveStatus }) => {
                             <td>{application.coverLetter}</td>
                             <td>{application.customResume}</td>
                             <td>
-                                {editingApplicationId === application.id ? (
+                                {editingApplicationId != null && editingApplicationId === application.id ? (
                                     <>
                                         <button 
                                             className="btn btn-success"
-                                            onClick={() => saveStatus(application.id)}
+                                            onClick={() => saveStatus(application)}
                                         >
                                             Save
                                         </button>

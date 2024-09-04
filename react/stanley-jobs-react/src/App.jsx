@@ -11,6 +11,7 @@ import UserList from './components/UserList.jsx';
 import Application from './pages/Application.jsx';
 import ManagerDashboard from './components/ManagerDashboard'
 import CandidateDashboard from './components/CandidateDashboard'
+import CandidateMyProfile from './components/CandidateMyProfile'
 
 function App() {
 
@@ -36,7 +37,8 @@ function App() {
           <Route path='/users' element={<UserList/>}/>
           <Route path='/application' element={<Application/>}/>
           <Route path='/manager' element={<ManagerDashboard managerId={2}/>}/>
-          <Route path='/candidate' element={<CandidateDashboard candidateId={4}/>} />
+          <Route path='/candidateApplications' element={<CandidateDashboard candidateId={4}/>} />
+          <Route path='/candidateProfile' element={<CandidateMyProfile candidateId={4}/>} />
         </Routes>
       </BrowserRouter>
     </>

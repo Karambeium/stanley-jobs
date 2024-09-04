@@ -211,3 +211,46 @@ textarea {
   font-weight: bold; /* Make text bold in the selected row */
 }
 
+button {
+  margin: 10px;
+}
+
+.label-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.label-tag {
+  background-color: #e0e0e0; /* Default background */
+  color: #1a1a1a; /* Default text color */
+  padding: 8px 12px;
+  border-radius: 15px; /* Rounded corners for tag-like feel */
+  font-size: 14px;
+  font-family: 'Helvetica Neue', sans-serif; /* Clean font */
+  display: inline-block;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow for depth */
+  transition: background-color 0.3s ease;
+}
+
+.label-tag:hover {
+  background-color: #cccccc; /* Default hover color */
+}
+
+/* Status-specific colors */
+.status-pending {
+  background-color: #ffe680; /* Light yellow for pending */
+  color: #665c00; /* Darker text for yellow contrast */
+}
+
+.status-accepted {
+  background-color: #d4edda; /* Light green for accepted */
+  color: #155724; /* Dark green text */
+}
+
+.status-rejected {
+  background-color: #f8d7da; /* Light red for rejected */
+  color: #721c24; /* Dark red text */
+}
+

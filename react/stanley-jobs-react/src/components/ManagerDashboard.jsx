@@ -128,13 +128,14 @@ const ManagerDashboard = ({ managerId }) => {
     };
 
     const saveApplicationStatus = async (applicationId, newStatus) => {
+        console.log(newStatus);
         try {
             const response = await fetch(`http://localhost:8080/applications/${applicationId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ application_status: newStatus }),
+                body: JSON.stringify({ applicationStatus: newStatus }),
             });
             if (!response.ok) {
                 throw new Error('Network response was not ok');
