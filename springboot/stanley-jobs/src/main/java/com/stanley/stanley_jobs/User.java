@@ -36,7 +36,7 @@ public class User {
         super();
     }
 
-    public long getId() {
+    public int getId() {
         return this.id;
     }
 
