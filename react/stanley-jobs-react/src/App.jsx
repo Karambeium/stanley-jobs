@@ -9,8 +9,9 @@ import Home from './pages/Home.jsx';
 import NavBar from './components/NavBar.jsx';
 import UserList from './components/UserList.jsx';
 import Application from './pages/Application.jsx';
-import ManagerDashboard from './components/ManagerDashboard'
-import CandidateDashboard from './components/CandidateDashboard'
+import ManagerDashboard from './pages/ManagerDashboard.jsx'
+import CandidateDashboard from './pages/CandidateDashboard.jsx'
+import AdminDashboard from './pages/AdminDashboard.jsx';
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
           <Route path='/application' element={<Application/>}/>
           <Route path='/manager' element={<ManagerDashboard managerId={2}/>}/>
           <Route path='/candidate' element={<CandidateDashboard candidateId={4}/>} />
+          <Route path='/admin' element={<AdminDashboard/>}/>
         </Routes>
       </BrowserRouter>
     </>

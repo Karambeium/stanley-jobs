@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import JobForm from './JobForm';
-import ApplicationList from './ApplicationList';
+import JobForm from '../components/JobForm';
+import ApplicationList from '../components/ApplicationList';
 
 const ManagerDashboard = ({ managerId }) => {
     const [jobListings, setJobListings] = useState([]);

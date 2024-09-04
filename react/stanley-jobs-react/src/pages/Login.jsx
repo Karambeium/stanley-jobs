@@ -30,14 +30,6 @@ function Login({ setRole, setUser, setUserId, userId, user }) {
         }).catch((err) => {
             setShowError(true);
         })
-        // setUserId(12);
-        // setUser({
-        //     username:'k',
-        //     password:'hi',
-        //     type:'Candidate'
-        // });
-        // console.log('user');
-        // nav('/home', {state:{userId:userId, role:user.type}});
     }
 
     return (
