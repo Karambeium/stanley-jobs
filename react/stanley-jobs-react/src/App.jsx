@@ -1,17 +1,21 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-// import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
-import JobsList from './components/JobsList.jsx';
 import Home from './pages/Home.jsx';
 import NavBar from './components/NavBar.jsx';
 import UserList from './components/UserList.jsx';
 import Application from './pages/Application.jsx';
+<<<<<<< HEAD
 import ManagerDashboard from './components/ManagerDashboard'
 import CandidateDashboard from './components/CandidateDashboard'
 import CandidateMyProfile from './components/CandidateMyProfile'
+=======
+import ManagerDashboard from './pages/ManagerDashboard.jsx'
+import CandidateDashboard from './pages/CandidateDashboard.jsx'
+import AdminDashboard from './pages/AdminDashboard.jsx';
+>>>>>>> e9fc69decb1f9c9bd331f193d9c0a585e4825eab
 
 function App() {
 
@@ -37,8 +41,13 @@ function App() {
           <Route path='/users' element={<UserList/>}/>
           <Route path='/application' element={<Application/>}/>
           <Route path='/manager' element={<ManagerDashboard managerId={2}/>}/>
+<<<<<<< HEAD
           <Route path='/candidateApplications' element={<CandidateDashboard candidateId={4}/>} />
           <Route path='/candidateProfile' element={<CandidateMyProfile candidateId={4}/>} />
+=======
+          <Route path='/candidate' element={<CandidateDashboard candidateId={4}/>} />
+          <Route path='/admin' element={<AdminDashboard/>}/>
+>>>>>>> e9fc69decb1f9c9bd331f193d9c0a585e4825eab
         </Routes>
       </BrowserRouter>
     </>
