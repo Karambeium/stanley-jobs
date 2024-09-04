@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ApplicationEditForm from './ApplicationEditForm';
+import ApplicationEditForm from '../components/ApplicationEditForm';
 
 const CandidateDashboard = ({ candidateId }) => {
     //TODO: 'My Profile'
