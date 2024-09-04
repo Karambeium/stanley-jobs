@@ -36,15 +36,13 @@ const AdminDashboard = ({ }) => {
     }
 
     const upgradeUser = (id, user) => {
-        const newUser = {...user};
-        newUser.id = id;
         fetch(`http://localhost:8080/users/${id}`,
             {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(newUser)
+                body: JSON.stringify(user)
             }
         ).then((res) => {
             if (res.ok) {
@@ -82,15 +80,16 @@ const AdminDashboard = ({ }) => {
     }
 
     return (
+        <>
+        <h2>Users</h2>
         <div style={{maxHeight:"75vh", overflowY:"scroll", overflowX:"auto"}}>
-            <h2>Users</h2>
                 <div className="admin-dashboard">
                     <table className="table">
                         <thead>
                             <tr>
                                 <th>User Id</th>
                                 <th>Username</th>
-                                <th>Type</th>
+                                <th>Role</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -103,44 +102,16 @@ const AdminDashboard = ({ }) => {
                                             <td>{u.username}</td>
                                             <td>{u.type}</td>
                                             <td>
-                                                <button style={{display:roleChangeId!==u.id?'block':'none'}} onClick={() => showTypeEditor(u.id)}>Edit User Type</button>
-                                                <select style={{display:roleChangeId===u.id?'block':'none'}}>
+                                            <div style={{alignItems:'flex'}} className='btn-group'>
+                                                <button style={{display:roleChangeId!==u.id?'inline':'none'}} onClick={() => showTypeEditor(u.id)}>Edit Role</button>
+                                                <select style={{display:roleChangeId===u.id?'inline':'none'}} onChange={(e) => u.type = e.target.value}>
                                                     <option value='Candidate'>Candidate</option>
                                                     <option value='Hiring Manager'>Hiring Manager</option>
                                                     <option value='Admin'>Admin</option>
                                                 </select>
-                                                <button style={{display:roleChangeId===u.id?'block':'none'}} onClick={() => upgradeUser(u.id, u)}>Save User</button>
-                                                <button onClick={() => deleteUser(u.id)}>Delete User</button>
-                                            </td>
-                                        </tr>
-                                    )
-                                })
-                            }
-                        </tbody>
-                    </table>
-                    <table className="table">
-                        <thead>
-                            <tr>
-                                <th>Listing Id</th>
-                                <th>Manager Id</th>
-                                <th>Department</th>
-                                <th>Job Title</th>
-                                <th>Description</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                jobs.map((j, i) => {
-                                    return (
-                                        <tr key={i}>
-                                            <td>{j.id}</td>
-                                            <td>{j.managerId}</td>
-                                            <td>{j.department}</td>
-                                            <td>{j.jobTitle}</td>
-                                            <td>{j.description}</td>
-                                            <td>
-                                                <button onClick={() => deleteListing(j.id)}>Delete Listing</button>
+                                                    <button className='btn' style={{display:roleChangeId===u.id?'inline':'none'}} onClick={() => upgradeUser(u.id, u)}>Save User</button>
+                                                    <button className="btn btn-danger" onClick={() => deleteUser(u.id)}>Delete User</button>
+                                                </div>
                                             </td>
                                         </tr>
                                     )
@@ -150,6 +121,43 @@ const AdminDashboard = ({ }) => {
                     </table>
                 </div>
         </div>
+        <h2>Job Listings</h2>
+        <div style={{maxHeight:"75vh", overflowY:"scroll", overflowX:"auto"}}>
+            <div className="admin-dashboard">
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th>Listing Id</th>
+                            <th>Manager Id</th>
+                            <th>Department</th>
+                            <th>Job Title</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            jobs.map((j, i) => {
+                                return (
+                                    <tr key={i}>
+                                        <td>{j.id}</td>
+                                        <td>{j.managerId}</td>
+                                        <td>{j.department}</td>
+                                        <td>{j.jobTitle}</td>
+                                        <td>{j.description}</td>
+                                        <td>
+                                            <button className="btn btn-danger" onClick={() => deleteListing(j.id)}>Delete Listing</button>
+                                        </td>
+                                    </tr>
+                                )
+                            })
+                        }
+                    </tbody>
+                </table>
+            </div>
+    </div>
+    </>
+
     );
 };
 

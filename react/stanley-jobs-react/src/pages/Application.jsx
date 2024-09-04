@@ -1,7 +1,10 @@
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import getCookie from '../components/cookieManager';
 
 function Application() {
+
+    const nav = useNavigate();
 
     const {job, userId, role, user} = useLocation().state;
     const[formData, setFormData] = useState({
@@ -11,7 +14,7 @@ function Application() {
     const handleApply = (event) => {
         event.preventDefault();
         console.log('appplication',userId);
-        fetch(`http://localhost:8080/candidates/${userId}`)
+        fetch(`http://localhost:8080/candidates/${getCookie('id')}`)
         .then((res) => res.json())
         .then((candidate) => {
             fetch("http://localhost:8080/applications", {

@@ -13,21 +13,26 @@ function Login({ setRole, setUser, setUserId, userId, user }) {
         fetch("http://localhost:8080/login",
             {
                 method : 'POST',
+                headers:{
+                    'Content-Type':'application/json'
+                },
                 body : JSON.stringify({
                     'username' : email,
                     'password' : password
                 })
             }
-        ).then((res) => {
-            if (res.status === 200) {
-                setUserId(res.body.id);
-                setUser(res.body);
-                document.cookie = `userId=${res.body.id}`;
-                nav('/home', {state:{userId:userId, role:res.body.type}});
-            } else {
-                setShowError(true);
-            }
-        }).catch((err) => {
+        ).then((res) => res.json())
+        .then((res) => {
+            console.log(res);
+            setUserId(res.id);
+            setUser(res);
+            console.log(res.id,res.type);
+            console.log(res);
+            document.cookie = `id=${res.id}`;
+            document.cookie = `role=${res.type}`;
+            nav('/home', {state:{userId:userId, role:res.type}});
+        })
+        .catch((err) => {
             setShowError(true);
         })
     }
@@ -36,7 +41,7 @@ function Login({ setRole, setUser, setUserId, userId, user }) {
         <>
             <form onSubmit={handleLogin}>
                 <input type="text" name="email" placeholder="Email" onChange={e => setEmail(e.target.value)} value={email}></input>
-                <input type="text" name="password" placeholder="Password" onChange={e => setPassword(e.target.value)} value={password}></input>
+                <input type="password" name="password" placeholder="Password" onChange={e => setPassword(e.target.value)} value={password}></input>
                 <input type="submit"></input>
             </form>
             <p style={{color:'red', display:showError?'inline-block':'none'}}>Incorrect credentials. Please register or retry</p>

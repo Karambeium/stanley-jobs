@@ -1,6 +1,10 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import getCookie from '../components/cookieManager';
 
 function Register({ setUser, user, setRole, setUserId }) {
+    const nav=useNavigate();
+
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -37,7 +41,10 @@ function Register({ setUser, user, setRole, setUserId }) {
                 setUser(user);
                 setUserId(user.id);
                 setRole(user.type);
-            });
+                document.cookie = `id=${user.id}`;
+                document.cookie = `role=${user.type}`;
+                nav('/home', {state:{userId:getCookie('id'), role:getCookie('role')}});
+            })
 
         setFormData({
             firstName: '',

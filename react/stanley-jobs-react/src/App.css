@@ -167,7 +167,7 @@ body {
   border-color: #dee2e6;
 }
 
-input[type="text"], textarea, select {
+input[type="text"], textarea, select, input[type="password"] {
   width: 100%;
   padding: 12px;
   border: 1px solid #ced4da;

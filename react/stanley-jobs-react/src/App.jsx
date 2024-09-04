@@ -10,6 +10,7 @@ import Application from './pages/Application.jsx';
 import ManagerDashboard from './pages/ManagerDashboard.jsx'
 import CandidateDashboard from './pages/CandidateDashboard.jsx'
 import AdminDashboard from './pages/AdminDashboard.jsx';
+import CandidateMyProfile from './components/CandidateMyProfile';
 
 function App() {
 
@@ -32,11 +33,12 @@ function App() {
           <Route path="/home" element={<Home userId={userId} role={role} user={user}/>}/>
           <Route path='/login' element={<Login setRole={setRole} setUser={setUser} setUserId={setUserId} userId={userId}/>}/>
           <Route path='/register' element={<Register setUser={setUser} user={user} setRole={setRole} setUserId={setUserId}/>}/>
-          <Route path='/users' element={<UserList/>}/>
+          <Route path='/users' element={<AdminDashboard/>}/>
           <Route path='/application' element={<Application/>}/>
-          <Route path='/manager' element={<ManagerDashboard managerId={2}/>}/>
-          <Route path='/candidate' element={<CandidateDashboard candidateId={4}/>} />
+          <Route path='/managerDashboard' element={<ManagerDashboard managerId={userId}/>}/>
+          <Route path='/candidateApplications' element={<CandidateDashboard candidateId={userId}/>} />
           <Route path='/admin' element={<AdminDashboard/>}/>
+          <Route path='/candidateProfile' element={<CandidateMyProfile candidateId={userId}/>} />
         </Routes>
       </BrowserRouter>
     </>

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import getCookie from './cookieManager';
 
 const CandidateMyProfile = ({ candidateId }) => {
 
@@ -9,13 +10,14 @@ const CandidateMyProfile = ({ candidateId }) => {
     },[]);
 
     const getInfo = () => {
-        fetch(`http://localhost:8080/candidates/${candidateId}`)
+        fetch(`http://localhost:8080/candidates/${getCookie('id')}`)
         .then(res => res.json())
         .then(info => setMyInfo(info))
     }
 
-    const handleUpdate = () => {
-        fetch(`http://localhost:8080/candidates/${candidateId}`,
+    const handleUpdate = (event) => {
+        event.preventDefault();
+        fetch(`http://localhost:8080/candidates/${getCookie('id')}`,
             {
                 method:'PUT',
                 headers: {
@@ -32,7 +34,7 @@ const CandidateMyProfile = ({ candidateId }) => {
             ...prevDetails,
             [name]: value,
         }));
-        console.log(formData);
+        // console.log(formData);
     }
 
     return (

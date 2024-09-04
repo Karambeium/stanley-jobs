@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function JobsList({ userId, role, user }) {
+    const nav = useNavigate();
+
     const [jobs, setJobs] = useState([]);
 
     useEffect(() => {
@@ -9,6 +11,10 @@ function JobsList({ userId, role, user }) {
         .then((res) => res.json())
         .then(arr => setJobs(arr));
     }, []);
+
+    function goToApply(job, role, userId, user) {
+        nav('/application', {state:{'job' : job,'role' : role,'userId' : userId,'user' : user}});
+    }
 
     return (
         <>
@@ -27,23 +33,23 @@ function JobsList({ userId, role, user }) {
                     </thead>
                     <tbody>
                         {
-                            jobs.map((u, i) => {
+                            jobs.map((j, i) => {
                                 return (
                                     <tr key={i}>
-                                        <td>{u.listingTitle}</td>
-                                        <td>{u.department}</td>
-                                        <td>{u.dateListed}</td>
-                                        <td>{u.jobTitle}</td>
-                                        <td>{u.jobDescription}</td>
-                                        <td>{u.listingStatus}</td>
+                                        <td>{j.listingTitle}</td>
+                                        <td>{j.department}</td>
+                                        <td>{new Date(j.dateListed).toLocaleDateString()}</td>
+                                        <td>{j.jobTitle}</td>
+                                        <td>{j.jobDescription}</td>
+                                        <td>{j.listingStatus}</td>
                                         <td>
-                                            <button>
+                                            <button onClick={() => goToApply(j, role, userId, user)} style={{display:j.listingStatus==='Closed'?'none':'block'}}>
                                             <Link to='/application' state = {{
-                                                'job' : u,
+                                                'job' : j,
                                                 'role' : role,
                                                 'userId' : userId,
                                                 'user' : user
-                                            }}>Apply</Link>
+                                            }} style={{display:j.listingStatus==='Closed'?'none':'block'}}>Apply</Link>
                                             </button>
                                             
                                         </td>
