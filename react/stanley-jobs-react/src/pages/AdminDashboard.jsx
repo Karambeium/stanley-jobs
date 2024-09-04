@@ -4,10 +4,12 @@ import ApplicationList from '../components/ApplicationList';
 
 const AdminDashboard = ({ }) => {
     const [users, setUsers] = useState([]);
+    const [jobs, setJobs] = useState([]);
     const [roleChangeId, setRoleChangeId] = useState();
 
     useEffect(() => {
         fetchUsers();
+        fetchJobs();
     }, []);
 
     const fetchUsers = async () => {
@@ -22,6 +24,16 @@ const AdminDashboard = ({ }) => {
             console.error('Error fetching job listings:', error);
         }
     };
+
+    const fetchJobs = () => {
+        try {
+            fetch('http://localhost:8080/jobs')
+            .then(res => res.json())
+            .then(res => setJobs(res));
+        } catch (e) {
+            console.error('Error fetching jobs:', e);
+        }
+    }
 
     const upgradeUser = (id, user) => {
         const newUser = {...user};
@@ -49,6 +61,18 @@ const AdminDashboard = ({ }) => {
         ).then((res) => {
             if (res.ok) {
                 fetchUsers();
+            }
+        })
+    }
+
+    const deleteListing = (id) => {
+        fetch(`http://localhost:8080/jobs/${id}`,
+            {
+                method: 'DELETE'
+            }
+        ).then((res) => {
+            if (res.ok) {
+                fetchJobs();
             }
         })
     }
@@ -94,9 +118,39 @@ const AdminDashboard = ({ }) => {
                             }
                         </tbody>
                     </table>
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>Listing Id</th>
+                                <th>Manager Id</th>
+                                <th>Department</th>
+                                <th>Job Title</th>
+                                <th>Description</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                jobs.map((j, i) => {
+                                    return (
+                                        <tr key={i}>
+                                            <td>{j.id}</td>
+                                            <td>{j.managerId}</td>
+                                            <td>{j.department}</td>
+                                            <td>{j.jobTitle}</td>
+                                            <td>{j.description}</td>
+                                            <td>
+                                                <button onClick={() => deleteListing(j.id)}>Delete Listing</button>
+                                            </td>
+                                        </tr>
+                                    )
+                                })
+                            }
+                        </tbody>
+                    </table>
                 </div>
         </div>
     );
 };
 
-export default ManagerDashboard;
+export default AdminDashboard;

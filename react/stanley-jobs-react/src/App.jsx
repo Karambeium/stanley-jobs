@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-// import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
-import JobsList from './components/JobsList.jsx';
 import Home from './pages/Home.jsx';
 import NavBar from './components/NavBar.jsx';
 import UserList from './components/UserList.jsx';
