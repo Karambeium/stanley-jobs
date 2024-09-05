@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import {useEffect} from 'react';
 
 function NavBar({userId, userName, role}) {
-
+    //TODO: remove home on nav bar for admin and hiring manager
     function getCookie(c) {
         const cookies = document.cookie.split('; ');
         for (let cookie of cookies) {

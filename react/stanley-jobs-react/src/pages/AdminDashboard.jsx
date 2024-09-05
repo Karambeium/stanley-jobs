@@ -167,7 +167,7 @@ const AdminDashboard = ({ }) => {
                                         <td>{j.managerId}</td>
                                         <td>{j.department}</td>
                                         <td>{j.jobTitle}</td>
-                                        <td>{j.description}</td>
+                                        <td>{j.jobDescription}</td>
                                         <td>
                                             <button className="btn btn-danger" onClick={() => deleteListing(j.id)}>Delete Listing</button>
                                         </td>

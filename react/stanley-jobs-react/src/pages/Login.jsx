@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import getCookie from '../components/cookieManager.js'
 
 function Login({ setRole, setUser, setUserId, userId, user }) {
     const nav = useNavigate();
@@ -30,7 +31,16 @@ function Login({ setRole, setUser, setUserId, userId, user }) {
             console.log(res);
             document.cookie = `id=${res.id}`;
             document.cookie = `role=${res.type}`;
-            nav('/home', {state:{userId:userId, role:res.type}});
+            if(getCookie('role') == "Admin") {
+                nav('/users', {state:{userId:userId, role:res.type}});
+            }
+            if(getCookie('role') == "Hiring Manager") {
+                nav('/managerDashboard', {state:{userId:userId, role:res.type}});
+            }
+            if(getCookie('role') == "Candidate") {
+                nav('/home', {state:{userId:userId, role:res.type}});
+            }
+            
         })
         .catch((err) => {
             setShowError(true);
