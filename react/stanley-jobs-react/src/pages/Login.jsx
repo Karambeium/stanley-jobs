@@ -32,13 +32,13 @@ function Login({ setRole, setUser, setUserId, userId, user }) {
             document.cookie = `id=${res.id}`;
             document.cookie = `role=${res.type}`;
             if(getCookie('role') == "Admin") {
-                nav('/users', {state:{userId:userId, role:res.type}});
+                nav('/users', {state:{userId:getCookie('id'), role:res.type}});
             }
             if(getCookie('role') == "Hiring Manager") {
-                nav('/managerDashboard', {state:{userId:userId, role:res.type}});
+                nav('/managerDashboard', {state:{userId:getCookie('id'), role:res.type}});
             }
             if(getCookie('role') == "Candidate") {
-                nav('/home', {state:{userId:userId, role:res.type}});
+                nav('/home', {state:{userId:getCookie('id'), role:res.type}});
             }
             
         })

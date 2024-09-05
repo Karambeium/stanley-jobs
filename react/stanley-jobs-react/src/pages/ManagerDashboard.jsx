@@ -151,9 +151,11 @@ const ManagerDashboard = ({ managerId }) => {
     };
 
     return (
-        <div style={{maxHeight:"75vh", overflowY:"scroll", overflowX:"auto"}}>
-            <h2>Your Job Listings</h2>
-            <button className="btn btn-primary" onClick={handleCreateClick}>
+        <div style={{marginTop:'50px'}}>
+            <h2 style={{display:isCreatingJob?'block':'none'}}>New Job Listing</h2>
+            <h2 style={{display:isCreatingJob || editingJobId?'none':'block'}}>Your Job Listings</h2>
+            <h2 style={{display:editingJobId?'block':'none'}}>Editing Job: {editingJobId}</h2>
+            <button className="btn btn-primary" onClick={handleCreateClick} style={{display:isCreatingJob || editingJobId?'none':'inline'}}>
                 Create New Job Listing
             </button>
 
@@ -201,7 +203,7 @@ const ManagerDashboard = ({ managerId }) => {
                                                 Delete
                                             </button>
                                             <button
-                                                className={`btn btn-secondary ${job.listingStatus === 'Closed' ? 'disabled-btn' : ''}`}
+                                                className={`btn ${job.listingStatus === 'Closed' ? 'disabled-btn' : ''}`}
                                                 onClick={(event) => closeJobListing(job.id, event)}
                                                 disabled={job.listingStatus === 'Closed'}
                                             >

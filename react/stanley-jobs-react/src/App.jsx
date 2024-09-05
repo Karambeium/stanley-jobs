@@ -19,6 +19,7 @@ function App() {
   });
   const [role, setRole] = useState('Candidate');
   const [userId, setUserId] = useState(undefined);
+  const [counter, setCounter] = useState(0);
 
   useEffect(() => {
     console.log('home page log', user);
@@ -30,11 +31,11 @@ function App() {
         <NavBar userId={userId} userName={user.username} role={role}></NavBar>
         <Routes>
           <Route path="/" element={<Login setRole={setRole} setUser={setUser} setUserId={setUserId} userId={userId} user={user}/>}/>
-          <Route path="/home" element={<Home userId={userId} role={role} user={user}/>}/>
+          <Route path="/home" element={<Home counter={counter} userId={userId} role={role} user={user}/>}/>
           <Route path='/login' element={<Login setRole={setRole} setUser={setUser} setUserId={setUserId} userId={userId}/>}/>
           <Route path='/register' element={<Register setUser={setUser} user={user} setRole={setRole} setUserId={setUserId}/>}/>
           <Route path='/users' element={<AdminDashboard/>}/>
-          <Route path='/application' element={<Application/>}/>
+          <Route path='/application' element={<Application setCounter={setCounter} counter={counter}/>}/>
           <Route path='/managerDashboard' element={<ManagerDashboard managerId={userId}/>}/>
           <Route path='/candidateApplications' element={<CandidateDashboard candidateId={userId}/>} />
           <Route path='/admin' element={<AdminDashboard/>}/>

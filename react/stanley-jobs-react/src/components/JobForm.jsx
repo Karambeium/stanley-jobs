@@ -40,70 +40,70 @@ const JobForm = ({ jobDetails, onSave, onCancel, isEditMode }) => {
     return (
         <form onSubmit={handleSubmit} className="job-form">
             <div className="form-group">
-                <label>Job Title:</label>
                 <input
                     type="text"
                     name="jobTitle"
                     value={formData.jobTitle}
                     onChange={handleInputChange}
                     required
+                    placeholder="Job Title"
                 />
             </div>
             <div className="form-group">
-                <label>Department:</label>
                 <input
                     type="text"
                     name="department"
                     value={formData.department}
                     onChange={handleInputChange}
                     required
+                    placeholder="Department"
                 />
             </div>
             <div className="form-group">
-                <label>Listing Title:</label>
                 <input
                     type="text"
                     name="listingTitle"
                     value={formData.listingTitle}
                     onChange={handleInputChange}
                     required
+                    placeholder="Listing Title"
                 />
             </div>
             <div className="form-group">
-                <label>Job Description:</label>
+                <select
+                    name="listingStatus"
+                    value={formData.listingStatus}
+                    onChange={handleInputChange}
+                    placeholder="Listing Status"
+                >
+                    <option value="Open">Open</option>
+                    <option value="Closed">Closed</option>
+                </select>
+            </div>
+            <div className="form-group">
                 <textarea
                     name="jobDescription"
                     value={formData.jobDescription}
                     onChange={handleInputChange}
                     rows="4"
                     required
+                    placeholder="Job Description"
                 />
             </div>
             <div className="form-group">
-                <label>Additional Information:</label>
                 <textarea
                     name="additionalInformation"
                     value={formData.additionalInformation}
                     onChange={handleInputChange}
                     rows="3"
+                    placeholder="Additional Information"
                 />
-            </div>
-            <div className="form-group">
-                <label>Listing Status:</label>
-                <select
-                    name="listingStatus"
-                    value={formData.listingStatus}
-                    onChange={handleInputChange}
-                >
-                    <option value="Open">Open</option>
-                    <option value="Closed">Closed</option>
-                </select>
-            </div>
+            </div><br/>
             <div className="form-actions">
-                <button type="submit" className="btn btn-success">
+                <button type="submit" className="btn btn-primary">
                     {isEditMode ? 'Save Changes' : 'Create Job'}
                 </button>
-                <button type="button" className="btn btn-secondary" onClick={onCancel}>
+                <button type="button" className="btn btn-success" onClick={onCancel}>
                     Cancel
                 </button>
             </div>

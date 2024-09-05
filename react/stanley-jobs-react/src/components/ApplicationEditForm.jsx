@@ -41,7 +41,6 @@ const ApplicationEditForm = ({ applicationDetails, onSave, onCancel }) => {
             <h3>Edit Application</h3>
             <form onSubmit={handleSubmit} className="job-form">
                 <div className="form-group">
-                    <label htmlFor="coverLetter">Cover Letter:</label>
                     <textarea
                         id="coverLetter"
                         name="coverLetter"
@@ -49,6 +48,7 @@ const ApplicationEditForm = ({ applicationDetails, onSave, onCancel }) => {
                         onChange={handleChange}
                         rows="4"
                         className="form-control"
+                        placeholder="Cover Letter"
                     />
                 </div>
                 <div className="form-group">

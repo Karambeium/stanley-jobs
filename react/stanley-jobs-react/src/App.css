@@ -176,7 +176,7 @@ input[type="text"], textarea, select, input[type="password"] {
   margin-bottom: 16px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   box-sizing: border-box;
-  height: 40px; /* Ensure content visibility */
+  height: 50px; /* Ensure content visibility */
   line-height: 1.2; /* Adjust for vertical centering */
 }
 
@@ -428,4 +428,29 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
   background-color: #0056b3;
+}
+
+.job-form div, textarea, select {
+  display: inline;
+}
+
+.job-form input, select, textarea {
+  width: 50vw;
+}
+
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding-top: 150px;
+  
+}
+
+.register-form {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 700px;
 }

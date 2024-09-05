@@ -46,11 +46,12 @@ function NavBar({userId, userName, role}) {
                 <Link to='/users' style={{display:getCookie('role')==='Admin'?'block':'none'}}>Manage System</Link>
                 <Link to='/login' style={{display:!getCookie('id')?'inline':'none'}}>Login</Link>
                 <Link to='/register' style={{display:!getCookie('id')?'inline':'none'}}>Register</Link>
-                <Link to='/home' style={{display:getCookie('id')?'block':'none'}}>Home</Link>
-                <Link to='/candidateProfile' style={{display:getCookie('role')==='Candidate'?'inline':'none', color:'black'}}>My Profile</Link>
-                <Link to='/managerDashboard' style={{display:getCookie('role')==='Hiring Manager'?'inline':'none', color:'black'}}>Manager Dashboard</Link>
+                <Link to='/home' style={{display:getCookie('role')==='Candidate'?'block':'none'}}>Home</Link>
+                <Link to='/candidateProfile' style={{display:getCookie('role')==='Candidate'?'inline':'none'}}>My Profile</Link>
+                <Link to='/managerDashboard' style={{display:getCookie('role')==='Hiring Manager'?'inline':'none'}}>Manager Dashboard</Link>
                 <Link to='/candidateApplications' style={{display:getCookie('role')==='Candidate'?'inline':'none'}}>My Applications</Link>
                 <Link to='/login' style={{display:getCookie('id')?'inline':'none'}} onClick={logOut}>Log Out</Link>
+                <Link to='/'>Welcome {getCookie('role')}</Link>
             </nav>
         </>
     )
