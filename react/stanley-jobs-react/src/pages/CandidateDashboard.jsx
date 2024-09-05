@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ApplicationEditForm from '../components/ApplicationEditForm';
 
 const CandidateDashboard = ({ candidateId }) => {
-    //TODO: 'My Profile'
+    //DONE: 'My Profile'
     //DONE: 'My Applications'
 
     const [myApplications, setMyApplications] = useState([]);
@@ -103,7 +103,15 @@ const CandidateDashboard = ({ candidateId }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {myApplications.map((application) => (
+                        {myApplications.length === 0? (
+                            <tr>
+                                <td colSpan="6" style={{ textAlign: 'center', padding: '20px', fontSize: '16px', color: '#888' }}>
+                                    You haven't applied to any jobs yet!
+                                </td>
+                
+                            </tr>
+                        ) : (
+                            myApplications.map((application) => (
                             <tr key={application.id}>
                                 <td>{application.jobId}</td>
                                 <td>{new Date(application.dateApplied).toLocaleDateString()}</td>
@@ -123,7 +131,8 @@ const CandidateDashboard = ({ candidateId }) => {
                                 </td>       
                             </tr>
                             
-                        ))}
+                        )))}
+                        
                     </tbody>
 
 

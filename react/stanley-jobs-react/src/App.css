@@ -180,6 +180,36 @@ input[type="text"], textarea, select, input[type="password"] {
   line-height: 1.2; /* Adjust for vertical centering */
 }
 
+input[type="submit"] {
+  background-color: #007bff;  /* Blue background for primary action */
+  color: white;  /* White text for contrast */
+  padding: 12px 24px;  /* Sufficient padding for a substantial button */
+  border-radius: 8px;  /* Smooth rounded corners */
+  border: none;  /* Remove default border */
+  font-size: 16px;  /* Slightly larger font for emphasis */
+  font-weight: 600;  /* Bold font for prominence */
+  cursor: pointer;  /* Pointer cursor on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Soft shadow for depth */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;  /* Smooth transition effects */
+  width: 100%;  /* Full width for the button */
+  margin-top: 16px;  /* Space at the top for separation from other elements */
+}
+
+/* Hover state */
+input[type="submit"]:hover {
+  background-color: #0056b3;  /* Darker blue on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);  /* Slightly deeper shadow on hover */
+}
+
+/* Disabled state */
+input[type="submit"]:disabled {
+  background-color: #e0e0e0;  /* Grey background for disabled button */
+  color: #6c757d;  /* Lighter text for disabled state */
+  cursor: not-allowed;  /* Disabled cursor */
+  box-shadow: none;  /* Remove shadow for disabled button */
+}
+
+
 select {
   background-color: #ffffff; /* Ensure dropdown background is white */
   appearance: none; /* Remove default dropdown arrow for custom styling if needed */
@@ -254,3 +284,148 @@ button {
   color: #721c24; /* Dark red text */
 }
 
+.submitButton {
+    background-color: #f5f5f5;  /* Soft, neutral background color */
+    color: #333;  /* Dark gray text */
+    padding: 10px 20px;  /* Space inside the button */
+    border-radius: 8px;  /* Rounded corners */
+    border: 1px solid #ccc;  /* Subtle border */
+    cursor: pointer;  /* Pointer on hover */
+    font-size: 14px;  /* Clean, small font size */
+    font-weight: 500;  /* Medium weight for clarity */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Light shadow for depth */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;  /* Smooth transitions */
+}
+
+.submitButton:hover {
+    background-color: #e0e0e0;  /* Slightly darker on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);  /* Deeper shadow on hover */
+}
+
+/* Tag-like applied status */
+.status-applied {
+  display: inline-block;
+  background-color: #e0e0e0; /* Light grey background */
+  color: #333; /* Darker text color */
+  font-size: 14px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Apply button */
+.apply-btn {
+  background-color: #ffd966;  /* Soft yellow background, consistent with your other buttons */
+  color: #856404;  /* Dark text for contrast */
+  padding: 10px 20px;  /* Space inside the button */
+  border-radius: 12px;  /* Rounded corners for a tag-like feel */
+  font-size: 14px;  /* Consistent font size */
+  font-weight: 500;  /* Medium weight for clarity */
+  border: 1px solid #ffc107;  /* Subtle border */
+  cursor: pointer;  /* Pointer on hover */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Light shadow for depth */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;  /* Smooth transitions */
+}
+
+/* Hover effect for Apply button */
+.apply-btn:hover {
+  background-color: #ffc107;  /* Slightly darker yellow on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);  /* Deeper shadow on hover */
+}
+
+/* Disabled Apply button */
+.apply-btn:disabled {
+  background-color: #e9ecef;  /* Grey background for disabled state */
+  color: #6c757d;  /* Lighter text for disabled state */
+  cursor: not-allowed;  /* Disabled cursor */
+  border-color: #dee2e6;  /* Lighter border for disabled state */
+  box-shadow: none;  /* Remove shadow for disabled state */
+}
+
+
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: linear-gradient(to bottom right, #f0f4f8, #e0e7ff); /* Soft gradient */
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #28a745; /* Green color */
+  padding: 1rem 2rem;
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);  /* Subtle shadow for depth */
+}
+
+.header h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.header nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.header nav a {
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.header nav a:hover {
+  color: #d4edda;  /* Light green hover */
+}
+.login-container {
+  background-color: #ffffff; /* White background for form */
+  padding: 40px;
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  max-width: 400px; /* Keep it compact */
+  width: 100%;
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-bottom: 24px;
+  font-size: 24px;
+  color: #333;
+}
+
+input[type="text"], input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  font-size: 16px;
+}
+
+input[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  padding: 12px;
+  width: 100%;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}

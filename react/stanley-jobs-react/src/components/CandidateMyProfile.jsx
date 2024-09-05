@@ -1,9 +1,19 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import getCookie from './cookieManager';
 
 const CandidateMyProfile = ({ candidateId }) => {
+    const nav = useNavigate();
 
-    const[myInfo, setMyInfo] = useState({});
+    const [myInfo, setMyInfo] = useState({
+        full_name: '',
+        email: '',
+        address: '',
+        phone: '',
+        resume: ''
+    });
 
     useEffect(() => {
         getInfo();
@@ -24,8 +34,20 @@ const CandidateMyProfile = ({ candidateId }) => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ ...myInfo }),
-            }
-        )
+            }).then((res) => {
+                if (res.ok) {
+                    return res.json(); 
+                } else {
+                    throw new Error('Failed to update profile');
+                }
+            }).then(() => {
+            toast.success('Profile updated successfully!');
+            setTimeout(() => {
+                nav('/home', {
+                    state: { userId: getCookie('id'), role: getCookie('role') },
+                });
+            }, 3000);
+            })
     }
 
     const handleInputChange = (event) => {
@@ -46,8 +68,9 @@ const CandidateMyProfile = ({ candidateId }) => {
                 <input type="text" name="address" placeholder="Address" onChange={handleInputChange} value={myInfo.address}></input>
                 <input type="text" name="phone" placeholder="Phone Number" onChange={handleInputChange} value={myInfo.phone}></input>
                 <textarea name="resume" placeholder="Resume" onChange={handleInputChange} value={myInfo.resume}></textarea>
-                <input type="submit"></input>
+                <input value="Update" className="submitButton" type="submit"></input>
             </form>
+            <ToastContainer/>
         </div>
     )
 

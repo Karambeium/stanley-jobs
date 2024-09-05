@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import JobForm from '../components/JobForm';
 import ApplicationList from '../components/ApplicationList';
+import getCookie from '../components/cookieManager';
 
 const ManagerDashboard = ({ managerId }) => {
     const [jobListings, setJobListings] = useState([]);
@@ -16,7 +17,7 @@ const ManagerDashboard = ({ managerId }) => {
 
     const fetchJobListings = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/jobs/manager/${managerId}`);
+            const response = await fetch(`http://localhost:8080/jobs/manager/${getCookie('id')}`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -38,11 +39,13 @@ const ManagerDashboard = ({ managerId }) => {
         setEditingJobId(null);
         setEditedJobDetails(null);
         setIsCreatingJob(true);
+        fetchJobListings();
     };
 
     const handleSave = async (jobData) => {
         try {
             const method = isCreatingJob ? 'POST' : 'PUT';
+            const id = getCookie('id');
             const url = isCreatingJob
                 ? `http://localhost:8080/jobs`
                 : `http://localhost:8080/jobs/${editingJobId}`;
@@ -52,7 +55,8 @@ const ManagerDashboard = ({ managerId }) => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ ...jobData, managerId }),
+                //TODO: managerID change to managerID from manager table
+                body: JSON.stringify({ ...jobData, managerId: id }),
             });
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -148,7 +152,7 @@ const ManagerDashboard = ({ managerId }) => {
 
     return (
         <div style={{maxHeight:"75vh", overflowY:"scroll", overflowX:"auto"}}>
-            <h2>Job Listings</h2>
+            <h2>Your Job Listings</h2>
             <button className="btn btn-primary" onClick={handleCreateClick}>
                 Create New Job Listing
             </button>

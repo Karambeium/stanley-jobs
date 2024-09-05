@@ -46,6 +46,29 @@ const AdminDashboard = ({ }) => {
             }
         ).then((res) => {
             if (res.ok) {
+            if (user.type === 'Hiring Manager') {
+                const managerData = {
+                    userId: id,  
+                    fullName: user.full_name,  
+                    email: user.username,  
+                    department: user.department || '',  
+                    phone: user.phone || '',  
+                };
+
+                fetch(`http://localhost:8080/manager`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(managerData),
+                }).then((res) => {
+                    if (res.ok) {
+                        console.log('User successfully added as a Hiring Manager');
+                    } else {
+                        console.error('Error adding user to manager table');
+                    }
+                });
+            }
                 setRoleChangeId();
             }
         });

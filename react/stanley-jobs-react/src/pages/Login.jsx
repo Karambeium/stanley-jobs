@@ -39,12 +39,15 @@ function Login({ setRole, setUser, setUserId, userId, user }) {
 
     return (
         <>
-            <form onSubmit={handleLogin}>
-                <input type="text" name="email" placeholder="Email" onChange={e => setEmail(e.target.value)} value={email}></input>
-                <input type="password" name="password" placeholder="Password" onChange={e => setPassword(e.target.value)} value={password}></input>
-                <input type="submit"></input>
-            </form>
-            <p style={{color:'red', display:showError?'inline-block':'none'}}>Incorrect credentials. Please register or retry</p>
+        <div className='login-container'>
+            <h2>Sign In</h2>
+                <form onSubmit={handleLogin}>
+                    <input type="text" name="email" placeholder="Email" onChange={e => setEmail(e.target.value)} value={email}></input>
+                    <input type="password" name="password" placeholder="Password" onChange={e => setPassword(e.target.value)} value={password}></input>
+                    <input type="submit"></input>
+                </form>
+                <p style={{color:'red', display:showError?'inline-block':'none'}}>Incorrect credentials. Please register or retry</p>
+            </div>
         </>
     )
 }

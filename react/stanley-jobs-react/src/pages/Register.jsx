@@ -43,7 +43,7 @@ function Register({ setUser, user, setRole, setUserId }) {
                 setRole(user.type);
                 document.cookie = `id=${user.id}`;
                 document.cookie = `role=${user.type}`;
-                nav('/home', {state:{userId:getCookie('id'), role:getCookie('role')}});
+                nav('/home', {state:{userId:user.id, role:user.type}});
             })
 
         setFormData({
@@ -70,7 +70,7 @@ function Register({ setUser, user, setRole, setUserId }) {
 
     return (
         <>
-            <h2>Register Page</h2>
+            <h2>Sign Up</h2>
             <form onSubmit={handleRegister}>
                 <input type="text" name="firstName" placeholder="First Name" onChange={handleInputChange} value={formData.firstName}></input>
                 <input type="text" name="lastName" placeholder="Last Name" onChange={handleInputChange} value={formData.lastName}></input>

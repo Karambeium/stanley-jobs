@@ -24,7 +24,8 @@ function Application() {
                     userId : userId,
                     dateApplied : new Date().toISOString().slice(0, 10),
                     coverLetter : formData.coverLetter,
-                    customResume : candidate.resume
+                    customResume : candidate.resume,
+                    applicationStatus: 'Pending'
                 }),
                 headers: {
                     'Content-Type': 'application/json'

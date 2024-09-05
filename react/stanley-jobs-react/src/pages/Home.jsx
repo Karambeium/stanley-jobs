@@ -1,10 +1,17 @@
 import JobsList from '../components/JobsList';
+import ManagerDashboard from './ManagerDashboard';
+import getCookie from '../components/cookieManager';
 
 function Home({ userId, role, user }) {
     return (
         <>
-            <h2>Home Page</h2>
-            <JobsList style={{display:role==='Candidate'?'block':'none'}} userId={userId} role={role} user={user}/>
+            {
+                getCookie('role')==='Candidate'?<JobsList userId={userId} role={role} user={user}/>:<></>
+            }
+            {
+                getCookie('role')==='Hiring Manager'?<ManagerDashboard/>:<></>
+            }
+            
         </>
     )
 }

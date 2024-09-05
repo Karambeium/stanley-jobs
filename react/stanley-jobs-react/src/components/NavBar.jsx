@@ -49,8 +49,8 @@ function NavBar({userId, userName, role}) {
                 <Link to='/home' style={{display:getCookie('id')?'block':'none'}}>Home</Link>
                 <Link to='/candidateProfile' style={{display:getCookie('role')==='Candidate'?'inline':'none', color:'black'}}>My Profile</Link>
                 <Link to='/managerDashboard' style={{display:getCookie('role')==='Hiring Manager'?'inline':'none', color:'black'}}>Manager Dashboard</Link>
-                <Link to='/login' style={{display:getCookie('id')?'inline':'none'}} onClick={logOut}>Log Out</Link>
                 <Link to='/candidateApplications' style={{display:getCookie('role')==='Candidate'?'inline':'none'}}>My Applications</Link>
+                <Link to='/login' style={{display:getCookie('id')?'inline':'none'}} onClick={logOut}>Log Out</Link>
             </nav>
         </>
     )
