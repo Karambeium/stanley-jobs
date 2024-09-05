@@ -13,6 +13,11 @@ function JobsList({ userId, role, user, counter }) {
         fetchAppliedJobs(); 
     }, [counter]);
 
+    useEffect(() => {
+        fetchJobs();
+        fetchAppliedJobs(); 
+    }, []);
+
     const fetchJobs = () => {
         fetch("http://localhost:8080/jobs")
         .then((res) => res.json())
