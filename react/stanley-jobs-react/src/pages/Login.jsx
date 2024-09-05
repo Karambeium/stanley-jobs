@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import getCookie from '../components/cookieManager.js'
+import { toast, ToastContainer } from 'react-toastify';
+
 
 function Login({ setRole, setUser, setUserId, userId, user }) {
     const nav = useNavigate();
@@ -32,13 +34,23 @@ function Login({ setRole, setUser, setUserId, userId, user }) {
             document.cookie = `id=${res.id}`;
             document.cookie = `role=${res.type}`;
             if(getCookie('role') == "Admin") {
-                nav('/users', {state:{userId:getCookie('id'), role:res.type}});
+                toast.success('Logged in successfully!');
+                setTimeout(() => {
+                    nav('/users', {state:{userId:getCookie('id'), role:res.type}});
+                }, 500);
             }
             if(getCookie('role') == "Hiring Manager") {
-                nav('/managerDashboard', {state:{userId:getCookie('id'), role:res.type}});
+                toast.success('Logged in successfully!');
+                setTimeout(() => {
+                    nav('/managerDashboard', {state:{userId:getCookie('id'), role:res.type}});
+                }, 500);
             }
             if(getCookie('role') == "Candidate") {
-                nav('/home', {state:{userId:getCookie('id'), role:res.type}});
+                toast.success('Logged in successfully!');
+                setTimeout(() => {
+                    nav('/home', {state:{userId:getCookie('id'), role:res.type}});
+                }, 500);
+                
             }
             
         })
@@ -57,6 +69,7 @@ function Login({ setRole, setUser, setUserId, userId, user }) {
                     <input type="submit"></input>
                 </form>
                 <p style={{color:'red', display:showError?'inline-block':'none'}}>Incorrect credentials. Please register or retry</p>
+            <ToastContainer></ToastContainer>
             </div>
         </>
     )

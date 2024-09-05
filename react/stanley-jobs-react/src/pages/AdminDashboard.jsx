@@ -105,7 +105,7 @@ const AdminDashboard = ({ }) => {
     return (
         <div style={{paddingTop:'200px'}}>
         <h2>Users</h2>
-        <div style={{maxHeight:"75vh", overflowY:"scroll", overflowX:"auto"}}>
+        <div style={{maxHeight:"45vh", overflowY:"scroll", overflowX:"auto"}}>
                 <div className="admin-dashboard">
                     <table className="table">
                         <thead>
@@ -145,7 +145,7 @@ const AdminDashboard = ({ }) => {
                 </div>
         </div>
         <h2>Job Listings</h2>
-        <div style={{maxHeight:"75vh", overflowY:"scroll", overflowX:"auto"}}>
+        <div style={{maxHeight:"45vh", overflowY:"scroll", overflowX:"auto"}}>
             <div className="admin-dashboard">
                 <table className="table">
                     <thead>

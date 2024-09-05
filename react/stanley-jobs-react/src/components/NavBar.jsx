@@ -1,7 +1,18 @@
 import { Link } from 'react-router-dom';
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 
 function NavBar({userId, userName, role}) {
+
+    const[name, setName] = useState();
+    useEffect(() => {
+        if (getCookie('id')) {
+            fetch(`http://localhost:8080/candidates/${getCookie('id')}`)
+            .then((res) => res.json())
+            .then((user) => document.cookie = `name=${user.full_name}`)
+            .then(() => setName(getCookie('name')));
+        }
+    }, [getCookie('id')])
+
     //TODO: remove home on nav bar for admin and hiring manager
     function getCookie(c) {
         const cookies = document.cookie.split('; ');
@@ -24,6 +35,8 @@ function NavBar({userId, userName, role}) {
     function logOut() {
         document.cookie='id=';
         document.cookie='role=';
+        document.cookie='name=';
+        setName();
         console.log(document.cookie);
         console.log(getCookie('role'));
         window.reload();
@@ -51,7 +64,7 @@ function NavBar({userId, userName, role}) {
                 <Link to='/managerDashboard' style={{display:getCookie('role')==='Hiring Manager'?'inline':'none'}}>Manager Dashboard</Link>
                 <Link to='/candidateApplications' style={{display:getCookie('role')==='Candidate'?'inline':'none'}}>My Applications</Link>
                 <Link to='/login' style={{display:getCookie('id')?'inline':'none'}} onClick={logOut}>Log Out</Link>
-                <Link to='/'>Welcome {getCookie('role')}</Link>
+                <Link to='/' style={{display:getCookie('id')?'inline':'none'}}>Welcome {name}</Link>
             </nav>
         </>
     )

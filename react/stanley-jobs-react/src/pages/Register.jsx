@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import getCookie from '../components/cookieManager';
+import { toast, ToastContainer } from 'react-toastify';
+
 
 function Register({ setUser, user, setRole, setUserId }) {
     const nav=useNavigate();
@@ -43,7 +45,10 @@ function Register({ setUser, user, setRole, setUserId }) {
                 setRole(user.type);
                 document.cookie = `id=${user.id}`;
                 document.cookie = `role=${user.type}`;
-                nav('/home', {state:{userId:user.id, role:user.type}});
+                toast.success('Registered successfully!');
+                setTimeout(() => {
+                    nav('/home', {state:{userId:user.id, role:user.type}});
+                }, 1000);
             })
 
         setFormData({
@@ -88,6 +93,7 @@ function Register({ setUser, user, setRole, setUserId }) {
                     </form>
                 </div>
             </div>
+            <ToastContainer></ToastContainer>
         </>
     );
 }

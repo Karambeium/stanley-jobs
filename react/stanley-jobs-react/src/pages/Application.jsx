@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import getCookie from '../components/cookieManager';
+import { toast, ToastContainer } from 'react-toastify';
 
 function Application({ setCounter, counter }) {
 
@@ -34,7 +35,10 @@ function Application({ setCounter, counter }) {
         )
         .then(() => {
             setCounter(counter++);
-            nav('/home');
+            toast.success('Application Submitted Successfully!');
+            setTimeout(() => {
+                nav('/home');
+            }, 1000);
             //fetchAppliedJobs();
             // window.reload();
         })
@@ -68,6 +72,7 @@ function Application({ setCounter, counter }) {
                 </div>
                 <input type="submit"></input>
             </form>
+            <ToastContainer></ToastContainer>
         </>
     )
 }

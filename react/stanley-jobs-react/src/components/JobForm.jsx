@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 
 const JobForm = ({ jobDetails, onSave, onCancel, isEditMode }) => {
     const [formData, setFormData] = useState({
@@ -35,9 +36,13 @@ const JobForm = ({ jobDetails, onSave, onCancel, isEditMode }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         onSave(formData); // Pass the form data to the onSave function
+        toast.success('Profile created successfully!');
+        setTimeout(() => {
+        }, 3000);
     };
 
     return (
+        <>
         <form onSubmit={handleSubmit} className="job-form">
             <div className="form-group">
                 <input
@@ -108,6 +113,10 @@ const JobForm = ({ jobDetails, onSave, onCancel, isEditMode }) => {
                 </button>
             </div>
         </form>
+        <ToastContainer />
+        </>
+        
+        
     );
 };
 
