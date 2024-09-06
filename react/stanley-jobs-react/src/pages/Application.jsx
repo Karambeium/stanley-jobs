@@ -68,6 +68,7 @@ function Application({ setCounter, counter }) {
                         value={formData.coverLetter}
                         onChange={handleInputChange}
                         placeholder="Cover Letter"
+                        style={{display:'inline-block'}}
                     />
                 </div>
                 <input type="submit"></input>

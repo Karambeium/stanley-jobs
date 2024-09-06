@@ -52,7 +52,6 @@ const ApplicationEditForm = ({ applicationDetails, onSave, onCancel }) => {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="customResume">Resume:</label>
                     <textarea
                         id="customResume"
                         name="customResume"
@@ -60,8 +59,9 @@ const ApplicationEditForm = ({ applicationDetails, onSave, onCancel }) => {
                         onChange={handleChange}
                         rows="4"
                         className="form-control"
+                        placeholder='resume'
                     />
-                </div>
+                </div><br/>
                 <div className="form-actions">
                     <button type="submit" className="btn btn-success">Update</button>
                     <button type="button" className="btn btn-secondary" onClick={onCancel}>Cancel</button>

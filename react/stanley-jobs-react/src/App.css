@@ -431,14 +431,14 @@ input[type="submit"]:hover {
 }
 
 .job-form div, textarea, select {
-  display: inline;
+  display: inline-block;
 }
 
 .job-form input, select, textarea {
   width: 50vw;
 }
 
-.register-container {
+.register-container, textarea {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -447,7 +447,7 @@ input[type="submit"]:hover {
   
 }
 
-.register-form {
+.register-form, textarea {
   background-color: #fff;
   padding: 30px;
   border-radius: 8px;
